@@ -1,0 +1,44 @@
+body {
+  margin: 0px;
+  height: 100vh;
+}
+
+.cardBackground {
+  border: 2px dashed red;
+  perspective: 600px;
+}
+.cardDeck {
+  display: flex;
+  flex-wrap: wrap;
+}
+.card {
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  margin: 5px;
+}
+
+.cardFront,
+.cardBack {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+}
+
+.cardFront {
+  border: 3px dotted white;
+  background-color: black;
+}
+.cardBack {
+  transform: rotateY(180deg);
+}
+
+.cardFlipped {
+  transform: rotateY(180deg);
+}
