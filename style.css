@@ -4,42 +4,42 @@ body {
 }
 
 .mainSection {
-height: 70vh;
+  height: 90vh;
 }
 
 .title {
-
 }
 
 h1 {
-    font-family: 'Limelight', cursive;
-    text-align: center;
+  font-family: "Limelight", cursive;
+  text-align: center;
 }
 
 button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 175px;
-    height: 55px;
-    padding: 3px;
-    border-radius: 15%;
-    border: 8px double red;
-    background-color: goldenrod;
-    color: white;
-    font-family: 'Limelight', cursive;
-    margin: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 175px;
+  height: 55px;
+  padding: 3px;
+  border-radius: 15%;
+  border: 8px double red;
+  background-color: goldenrod;
+  color: white;
+  font-family: "Limelight", cursive;
+  margin: 15px;
 }
 
-.startGame, .endGame {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.startGame,
+.endGame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cardBackground {
-  border: 2px dashed red;
-  
+  margin: 5px;
+  border: 10px dotted goldenrod;
 }
 .cardDeck {
   display: flex;
@@ -48,7 +48,7 @@ button {
   padding: 10px;
   justify-content: center;
   align-items: center;
-  perspective: 900px;
+  perspective: 1500px;
 }
 .card {
   justify-content: center;
@@ -87,9 +87,9 @@ button {
     min-height: 75px;
   }
 
-.mainSection {
-    height: 100vh;
-}
+  .mainSection {
+    height: 70vh;
+  }
 
   .card-img {
     max-height: 75px;
