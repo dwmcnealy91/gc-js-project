@@ -2,9 +2,12 @@ let startButton = document
   .getElementById("startButton")
   .addEventListener("click", shuffleDeck);
 let newDeck = [];
-let cardDeck = document.querySelector("cardDeck");
+let cardDeck = document
+  .querySelector("cardDeck")
+  .addEventListener("click", flipCard);
 let timer = document.querySelector("timer");
 let seconds;
+let flippedCards = [];
 
 //shuffle deck and re-position cards
 const shuffle = (array) => {
@@ -42,3 +45,29 @@ const startTimer = () => {
     }
   }, 1000);
 };
+
+const flipCard = (e) => {
+  if (
+    e.target.classList.contains("card") &&
+    !e.target.classList.contains("match")
+  ) {
+    e.target.classList.toggle("flipCard");
+    flippedCards.push(e.target);
+    let length = flippedCards.length;
+    if (length === 2) {
+      disable();
+      if (flippedCards[0].type === flippedCards[1].type) {
+        matched();
+      } else {
+        unmatched();
+      }
+    }
+  }
+};
+
+// clearInterval(myTimer);
+// timer.innerText = "Countdown Timer: 45 Seconds";
+// flippedCards = [];
+// startTimer();
+// seconds = 45;
+// enable();
