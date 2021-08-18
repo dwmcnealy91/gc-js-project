@@ -1,6 +1,10 @@
 let startButton = document
   .getElementById("startButton")
-  .addEventListener("click", shuffleDeck);
+  .addEventListener("click", ()=>{
+      shuffleDeck();
+      startTimer();
+  });
+
 let newDeck = [];
 let cardDeck = document
   .querySelector("cardDeck")
@@ -75,6 +79,18 @@ const matched = () => {
   disable();
   flippedCards = [];
 };
+
+function unmatched() {
+    disable();
+    setTimeout(function(){
+        flippedCards[0].classList.remove(".cardBack");
+        flippedCards[1].classList.remove(".cardBack");
+        enable();
+        flippedCards = [];
+    },1000);
+}
+
+
 
 // clearInterval(myTimer);
 // timer.innerText = "Countdown Timer: 45 Seconds";
