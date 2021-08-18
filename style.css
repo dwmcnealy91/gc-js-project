@@ -35,22 +35,22 @@ button {
 }
 
 .timerContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .timer {
-    padding-top: 25px;
-    border: 3px dashed goldenrod;
-    background-color: black;
-    width: 175px;
-    height: 55px;
-    border-radius: 15%;
-    color: white;
-    font-family: "Limelight", cursive;
-    font-size: small;
+  padding-top: 25px;
+  border: 3px dashed goldenrod;
+  background-color: black;
+  width: 175px;
+  height: 55px;
+  border-radius: 15%;
+  color: white;
+  font-family: "Limelight", cursive;
+  font-size: small;
 }
 
 .cardBackground {
@@ -98,14 +98,17 @@ button {
   transform: rotateY(180deg);
 }
 
+.match {
+  opacity: 0;
+}
 @media only screen and (min-width: 472px) {
   .card {
     min-height: 75px;
   }
 
-.mainSection {
+  .mainSection {
     height: 80vh;
-}
+  }
 
   .mainSection {
     height: 70vh;

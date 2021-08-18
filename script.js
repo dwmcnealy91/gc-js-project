@@ -46,23 +46,34 @@ const startTimer = () => {
   }, 1000);
 };
 
-const flipCard = (e) => {
-  if (
-    e.target.classList.contains("card") &&
-    !e.target.classList.contains("match")
-  ) {
-    e.target.classList.toggle("flipCard");
-    flippedCards.push(e.target);
-    let length = flippedCards.length;
-    if (length === 2) {
-      disable();
-      if (flippedCards[0].type === flippedCards[1].type) {
-        matched();
-      } else {
-        unmatched();
-      }
+const flipCard = () => {
+  flippedCards.push(this);
+  let length = flippedCards.length;
+  if (length === 2) {
+    disable();
+    if (flippedCards[0].type === flippedCards[1].type) {
+      matched();
+    } else {
+      unmatched();
     }
   }
+};
+
+const disable = () => {
+  cardDeck.removeEventListener("click", flipCard);
+};
+
+const enable = () => {
+  cardDeck.addEventListener("click", flipCard);
+};
+
+const matched = () => {
+  flippedCards[0].classList.add("match");
+  flippedCards[1].classList.add("match");
+  flippedCards[0].classList.remove(".cardFront", ".cardBack");
+  flippedCards[1].classList.remove(".cardFront", ".cardBack");
+  disable();
+  flippedCards = [];
 };
 
 // clearInterval(myTimer);
