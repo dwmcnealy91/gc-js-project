@@ -16,9 +16,6 @@ h1 {
 }
 
 button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 175px;
   height: 55px;
   padding: 3px;
@@ -35,6 +32,25 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.timerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.timer {
+    padding-top: 25px;
+    border: 3px dashed goldenrod;
+    background-color: black;
+    width: 175px;
+    height: 55px;
+    border-radius: 15%;
+    color: white;
+    font-family: "Limelight", cursive;
+    font-size: small;
 }
 
 .cardBackground {
