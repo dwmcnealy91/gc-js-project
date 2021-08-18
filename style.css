@@ -87,15 +87,13 @@ button {
     min-height: 75px;
   }
 
-<<<<<<< HEAD
 .mainSection {
     height: 80vh;
 }
-=======
+
   .mainSection {
     height: 70vh;
   }
->>>>>>> b35a26f5e705434b0c24505320d312c0b965b4a0
 
   .card-img {
     max-height: 75px;
