@@ -6,10 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GC Project</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>Let's all go to the movies.</h1>
-    <button id="startButton">Let The Show Begin</button>
+    <div class="title">
+     <h1>Let's all go to the movies.</h1>   
+    </div>
+    <div class="startGame">
+     <button id="startButton">Let The Show Begin</button>   
+    </div>
     <div class="cardBackground">
       <ul class="cardDeck">
         <li class="card">
@@ -141,9 +148,10 @@
           </div>
         </li>
       </ul>
-      <button id="resetButton">Be Kind, Rewind!</button>
     </div>
-
+      <div class="endGame">
+       <button id="resetButton">Be Kind, Rewind!</button>   
+      </div>
     <script src="script.js"></script>
   </body>
 </html>
