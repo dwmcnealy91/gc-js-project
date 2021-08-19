@@ -17,7 +17,7 @@ let timer = document.querySelector(".timer");
 let seconds;
 let flippedCards = [];
 let matchCounter = 0;
-let modal = document.querySelector(".win modal");
+let winModal = document.getElementById("winModal");
 let timeElapsed;
 let clockTime = document.querySelector(".clockTime");
 
@@ -110,7 +110,7 @@ function matched() {
   if (matchCounter !== 6) {
     matchCounter++;
     if (matchCounter === 6) {
-      winModal();
+      win();
     }
   }
 }
@@ -125,7 +125,7 @@ function unmatched() {
   }, 1000);
 }
 
-function winModal() {
+function win() {
   setTimeout(function () {
     winModal.style.visibility = null;
     winModal.style.opacity = null;
