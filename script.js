@@ -7,7 +7,7 @@ let startButton = document
 
 let newDeck = [];
 let cardDeck = document
-  .querySelector("cardDeck")
+  .querySelector(".cardDeck")
   .addEventListener("click", flipCard);
 let timer = document.querySelector("timer");
 let seconds;
