@@ -7,9 +7,6 @@ body {
   height: 90vh;
 }
 
-.title {
-}
-
 h1 {
   font-family: "Limelight", cursive;
   text-align: center;
@@ -103,6 +100,45 @@ button {
 }
 .match {
   opacity: 0;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: var(--black);
+  /* visibility: hidden; */
+  /* opacity: 0; */
+  transition: all 0.35s ease-in;
+}
+
+.text {
+  text-align: center;
+  position: relative;
+  max-width: 800px;
+  max-height: 80vh;
+  border-radius: 5px;
+  background: var(--white);
+  overflow: auto;
+  cursor: default;
+  font-family: "Limelight", cursive;
+  background-color: red;
+  color: white;
+  border: 4px double white;
+}
+
+.button {
+  font-family: "Limelight", cursive;
+  background-color: goldenrod;
+  color: black;
+  border: 3px dashed black;
+  border-radius: 15%;
 }
 @media only screen and (min-width: 472px) {
   .card {
