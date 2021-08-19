@@ -98,6 +98,9 @@ button {
   transform: rotateY(180deg);
 }
 
+.card-img {
+  max-height: 75px;
+}
 .match {
   opacity: 0;
 }
