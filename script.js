@@ -16,12 +16,10 @@ cardDeck.addEventListener("click", flipCard);
 let timer = document.querySelector(".timer");
 let seconds;
 let flippedCards = [];
-<<<<<<< HEAD
 let matchCounter = 0;
-=======
 let modal = document.querySelector(".win modal");
 let timeElapsed;
->>>>>>> 46ef5be08a776e58a5e41808fd27c33b5955cb35
+let clockTime = document.querySelector(".clockTime");
 
 //shuffle deck and re-position cards
 const shuffle = (array) => {
@@ -100,7 +98,7 @@ const enable = () => {
   cardDeck.addEventListener("click", flipCard);
 };
 
-const matched = () => {
+function matched() {
   setTimeout(function () {
     flippedCards[0].classList.add("match");
     flippedCards[1].classList.add("match");
@@ -109,8 +107,13 @@ const matched = () => {
     enable();
     flippedCards = [];
   }, 1000);
-};
-
+  if (matchCounter !== 6) {
+    matchCounter++;
+    if (matchCounter === 6) {
+      winModal();
+    }
+  }
+}
 function unmatched() {
   disable();
   setTimeout(function () {
@@ -122,7 +125,7 @@ function unmatched() {
   }, 1000);
 }
 
-function winModal () {
+function winModal() {
   setTimeout(function () {
     winModal.style.visibility = null;
     winModal.style.opacity = null;
