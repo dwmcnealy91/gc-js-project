@@ -2,19 +2,21 @@ let startButton = document
   .getElementById("startButton")
   .addEventListener("click", () => {
     reset();
-
   });
 
-let resetButton = document.getElementById("resetButton").addEventListener("click", () => {
+let resetButton = document
+  .getElementById("resetButton")
+  .addEventListener("click", () => {
     reset();
-});
-let myTimer; 
+  });
+let myTimer;
 let newDeck = Array.from(document.querySelectorAll(".card"));
 let cardDeck = document.querySelector(".cardDeck");
 cardDeck.addEventListener("click", flipCard);
 let timer = document.querySelector(".timer");
 let seconds;
 let flippedCards = [];
+let matchCounter = 0;
 
 //shuffle deck and re-position cards
 const shuffle = (array) => {
@@ -41,8 +43,8 @@ const shuffleDeck = () => {
 };
 // manipulate html text
 const startTimer = () => {
-    clearInterval(myTimer);
-    seconds = 45;
+  clearInterval(myTimer);
+  seconds = 45;
   myTimer = setInterval(() => {
     if (seconds === 0) {
       clearInterval(myTimer);
@@ -51,13 +53,13 @@ const startTimer = () => {
       timer.innerText = `Countown: ${seconds} seconds`;
     }
   }, 1000);
-  console.log(startTimer)
+  console.log(startTimer);
 };
 
 function flipCard(event) {
   const card = event.target.parentElement;
   console.log(card);
-  card.classList.add("cardFlipped")
+  card.classList.add("cardFlipped");
   flippedCards.push(card);
   let length = flippedCards.length;
   if (length === 2) {
@@ -80,15 +82,11 @@ const reset = () => {
       item.classList.remove("match", "cardFlipped");
     }
   }
-
-
-   
-
-    flippedCards = [];
-    startTimer();
-    
+  flippedCards = [];
+  startTimer();
   enable();
 };
+
 const disable = () => {
   cardDeck.removeEventListener("click", flipCard);
 };
@@ -98,7 +96,7 @@ const enable = () => {
 };
 
 const matched = () => {
-  setTimeout(function () { 
+  setTimeout(function () {
     flippedCards[0].classList.add("match");
     flippedCards[1].classList.add("match");
     flippedCards[0].classList.remove("cardFlipped");
