@@ -5,8 +5,7 @@ let startButton = document
     // startTimer(); will bring back timer later
   });
 
-let newDeck = document.querySelectorAll(".card");
-console.log(newDeck);
+let newDeck = Array.from(document.querySelectorAll(".card"));
 let cardDeck = document.querySelector(".cardDeck");
 cardDeck.addEventListener("click", flipCard);
 let timer = document.querySelector("timer");
@@ -31,13 +30,11 @@ const shuffle = (array) => {
 //shuffles deck and adds card elements to page
 const shuffleDeck = () => {
   shuffle(newDeck);
-  console.log(newDeck);
   cardDeck.innerHTML = "";
   for (let item of newDeck) {
     cardDeck.append(item);
   }
 };
-console.log();
 // manipulate html text
 // const startTimer = () => {
 //   myTimer = setInterval(() => {
@@ -51,8 +48,11 @@ console.log();
 //   }, 1000);
 // };
 
-function flipCard() {
-  flippedCards.push(this);
+function flipCard(event) {
+  const card = event.target.parentElement;
+  console.log(card);
+  card.classList.add("cardFlipped")
+  flippedCards.push(card);
   let length = flippedCards.length;
   if (length === 2) {
     disable();
@@ -63,7 +63,6 @@ function flipCard() {
     }
   }
 }
-flipCard();
 
 const reset = () => {
   shuffleDeck();
@@ -94,19 +93,22 @@ const enable = () => {
 };
 
 const matched = () => {
-  flippedCards[0].classList.add("match");
-  flippedCards[1].classList.add("match");
-  flippedCards[0].classList.remove(".cardFront", ".cardBack");
-  flippedCards[1].classList.remove(".cardFront", ".cardBack");
-  disable();
-  flippedCards = [];
+  setTimeout(function () { 
+    flippedCards[0].classList.add("match");
+    flippedCards[1].classList.add("match");
+    flippedCards[0].classList.remove("cardFlipped");
+    flippedCards[1].classList.remove("cardFlipped");
+    enable();
+    flippedCards = [];
+  }, 1000);
 };
 
 function unmatched() {
   disable();
   setTimeout(function () {
-    flippedCards[0].classList.remove(".cardBack");
-    flippedCards[1].classList.remove(".cardBack");
+    console.log(flippedCards);
+    flippedCards[0].classList.remove("cardFlipped");
+    flippedCards[1].classList.remove("cardFlipped");
     enable();
     flippedCards = [];
   }, 1000);
