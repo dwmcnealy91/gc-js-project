@@ -2,17 +2,17 @@ let startButton = document
   .getElementById("startButton")
   .addEventListener("click", () => {
     reset();
-    // startTimer(); will bring back timer later
+
   });
 
 let resetButton = document.getElementById("resetButton").addEventListener("click", () => {
     reset();
 });
-
+let myTimer; 
 let newDeck = Array.from(document.querySelectorAll(".card"));
 let cardDeck = document.querySelector(".cardDeck");
 cardDeck.addEventListener("click", flipCard);
-let timer = document.querySelector("timer");
+let timer = document.querySelector(".timer");
 let seconds;
 let flippedCards = [];
 
@@ -40,17 +40,19 @@ const shuffleDeck = () => {
   }
 };
 // manipulate html text
-// const startTimer = () => {
-//   myTimer = setInterval(() => {
-//     if (seconds === 0) {
-//       clearInterval(myTimer);
-//       matchCounter = 0;
-//     } else {
-//       seconds--;
-//       timer.innerText = `Countown: ${seconds} seconds`;
-//     }
-//   }, 1000);
-// };
+const startTimer = () => {
+    clearInterval(myTimer);
+    seconds = 45;
+  myTimer = setInterval(() => {
+    if (seconds === 0) {
+      clearInterval(myTimer);
+    } else {
+      seconds--;
+      timer.innerText = `Countown: ${seconds} seconds`;
+    }
+  }, 1000);
+  console.log(startTimer)
+};
 
 function flipCard(event) {
   const card = event.target.parentElement;
@@ -79,13 +81,12 @@ const reset = () => {
     }
   }
 
-  //count down timer
-  //   clearInterval(myTimer);
-  //   scoreCounter = 0;
 
-  //   openedCards = [];
-  //   startTimer();
-  //   seconds = 45;
+   
+
+    flippedCards = [];
+    startTimer();
+    
   enable();
 };
 const disable = () => {
