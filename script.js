@@ -15,6 +15,8 @@ cardDeck.addEventListener("click", flipCard);
 let timer = document.querySelector(".timer");
 let seconds;
 let flippedCards = [];
+let modal = document.querySelector(".win modal");
+let timeElapsed;
 
 //shuffle deck and re-position cards
 const shuffle = (array) => {
@@ -117,4 +119,14 @@ function unmatched() {
     enable();
     flippedCards = [];
   }, 1000);
+}
+
+function winModal () {
+  setTimeout(function () {
+    winModal.style.visibility = null;
+    winModal.style.opacity = null;
+  }, 1000);
+  timeElapsed = 45 - seconds;
+  clockTime.innerText = `${timeElapsed} seconds`;
+  clearInterval(myTimer);
 }
