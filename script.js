@@ -2,13 +2,13 @@ let startButton = document
   .getElementById("startButton")
   .addEventListener("click", () => {
     reset();
-    startTimer();
+    // startTimer(); will bring back timer later
   });
 
-let newDeck = [];
-let cardDeck = document
-  .querySelector(".cardDeck")
-  .addEventListener("click", flipCard);
+let newDeck = document.querySelectorAll(".card");
+console.log(newDeck);
+let cardDeck = document.querySelector(".cardDeck");
+cardDeck.addEventListener("click", flipCard);
 let timer = document.querySelector("timer");
 let seconds;
 let flippedCards = [];
@@ -28,29 +28,30 @@ const shuffle = (array) => {
   }
   return array;
 };
-
+//shuffles deck and adds card elements to page
 const shuffleDeck = () => {
   shuffle(newDeck);
+  console.log(newDeck);
   cardDeck.innerHTML = "";
   for (let item of newDeck) {
     cardDeck.append(item);
   }
 };
-
+console.log();
 // manipulate html text
-const startTimer = () => {
-  myTimer = setInterval(() => {
-    if (seconds === 0) {
-      clearInterval(myTimer);
-      matchCounter = 0;
-    } else {
-      seconds--;
-      timer.innerText = `Countown: ${seconds} seconds`;
-    }
-  }, 1000);
-};
+// const startTimer = () => {
+//   myTimer = setInterval(() => {
+//     if (seconds === 0) {
+//       clearInterval(myTimer);
+//       matchCounter = 0;
+//     } else {
+//       seconds--;
+//       timer.innerText = `Countown: ${seconds} seconds`;
+//     }
+//   }, 1000);
+// };
 
-const flipCard = () => {
+function flipCard() {
   flippedCards.push(this);
   let length = flippedCards.length;
   if (length === 2) {
@@ -61,8 +62,29 @@ const flipCard = () => {
       unmatched();
     }
   }
-};
+}
+flipCard();
 
+const reset = () => {
+  shuffleDeck();
+  for (let item of newDeck) {
+    if (
+      item.classList.contains("match") ||
+      item.classList.contains("flipCard")
+    ) {
+      item.classList.remove("match", "flipCard");
+    }
+  }
+
+  //count down timer
+  //   clearInterval(myTimer);
+  //   scoreCounter = 0;
+
+  //   openedCards = [];
+  //   startTimer();
+  //   seconds = 45;
+  enable();
+};
 const disable = () => {
   cardDeck.removeEventListener("click", flipCard);
 };
