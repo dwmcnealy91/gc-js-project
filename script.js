@@ -5,6 +5,10 @@ let startButton = document
     // startTimer(); will bring back timer later
   });
 
+let resetButton = document.getElementById("resetButton").addEventListener("click", () => {
+    reset();
+});
+
 let newDeck = Array.from(document.querySelectorAll(".card"));
 let cardDeck = document.querySelector(".cardDeck");
 cardDeck.addEventListener("click", flipCard);
@@ -56,7 +60,7 @@ function flipCard(event) {
   let length = flippedCards.length;
   if (length === 2) {
     disable();
-    if (flippedCards[0].type === flippedCards[1].type) {
+    if (flippedCards[0].dataset.pair === flippedCards[1].dataset.pair) {
       matched();
     } else {
       unmatched();
@@ -69,9 +73,9 @@ const reset = () => {
   for (let item of newDeck) {
     if (
       item.classList.contains("match") ||
-      item.classList.contains("flipCard")
+      item.classList.contains("cardFlipped")
     ) {
-      item.classList.remove("match", "flipCard");
+      item.classList.remove("match", "cardFlipped");
     }
   }
 
