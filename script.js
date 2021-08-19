@@ -3,11 +3,15 @@ let startButton = document
   .addEventListener("click", () => {
     reset();
   });
-
 let resetButton = document
   .getElementById("resetButton")
   .addEventListener("click", () => {
     reset();
+  });
+let encoreButton = document
+  .querySelector(".button")
+  .addEventListener("click", () => {
+    removeReset();
   });
 let myTimer;
 let newDeck = Array.from(document.querySelectorAll(".card"));
@@ -17,9 +21,13 @@ let timer = document.querySelector(".timer");
 let seconds;
 let flippedCards = [];
 let matchCounter = 0;
-let winModal = document.getElementById("winModal");
+let winModal = document.querySelector(".win");
 let timeElapsed;
 let clockTime = document.querySelector(".clockTime");
+let removeModal = document.querySelectorAll(".modal");
+
+//player must hit start button to begin play
+window.onload = disable();
 
 //shuffle deck and re-position cards
 const shuffle = (array) => {
@@ -36,6 +44,7 @@ const shuffle = (array) => {
   }
   return array;
 };
+
 //shuffles deck and adds card elements to page
 const shuffleDeck = () => {
   shuffle(newDeck);
@@ -44,6 +53,7 @@ const shuffleDeck = () => {
     cardDeck.append(item);
   }
 };
+
 // manipulate html text
 const startTimer = () => {
   clearInterval(myTimer);
@@ -90,9 +100,9 @@ const reset = () => {
   enable();
 };
 
-const disable = () => {
+function disable() {
   cardDeck.removeEventListener("click", flipCard);
-};
+}
 
 const enable = () => {
   cardDeck.addEventListener("click", flipCard);
@@ -127,10 +137,19 @@ function unmatched() {
 
 function win() {
   setTimeout(function () {
-    winModal.style.visibility = null;
-    winModal.style.opacity = null;
+    winModal.style.cssText = "visibility: visible";
+    winModal.style.opacity = 1;
   }, 1000);
   timeElapsed = 45 - seconds;
-  clockTime.innerText = `${timeElapsed} seconds`;
+  clockTime.innerText = `${timeElapsed} seconds!`;
   clearInterval(myTimer);
 }
+
+//remove modal and reset game
+const removeReset = () => {
+  for (let item of removeModal) {
+    item.style.cssText = "visibility: none";
+    item.style.opacity = 0;
+  }
+  reset();
+};
