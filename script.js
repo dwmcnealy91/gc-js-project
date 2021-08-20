@@ -26,10 +26,10 @@ let seconds;
 let flippedCards = [];
 
 
-let matchCounter = 0;
+
 
 let modal = document.querySelector(".win modal");
-let timeElapsed;
+
 
 
 let matchCounter = 0;
@@ -115,7 +115,7 @@ const reset = () => {
     }
   }
   flippedCards = [];
-  //startTimer();
+  startTimer();
   enable();
 };
 
