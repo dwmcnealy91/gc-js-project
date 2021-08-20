@@ -106,7 +106,7 @@ const reset = () => {
     }
   }
   flippedCards = [];
-  startTimer();
+  //startTimer();
   enable();
 };
 
