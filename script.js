@@ -21,7 +21,6 @@ let playAgainButton = document
 let myTimer;
 let newDeck = Array.from(document.querySelectorAll(".card"));
 let cardDeck = document.querySelector(".cardDeck");
-cardDeck.addEventListener("click", flipCard);
 let timer = document.querySelector(".timer");
 let seconds;
 let flippedCards = [];
@@ -77,6 +76,10 @@ const startTimer = () => {
 };
 
 function flipCard(event) {
+  if (!event.target.classList.contains("cardFront")) {
+    return;
+    //exit the function. Don't run
+  }
   const card = event.target.parentElement;
   console.log(card);
   card.classList.add("cardFlipped");

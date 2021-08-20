@@ -97,9 +97,10 @@ button {
 
 .card-img {
   width: 100%;
+  height: 100%;
   object-fit: cover;
-  max-height: 30px;
 }
+
 .match {
   opacity: 0;
 }
@@ -154,10 +155,6 @@ button {
   .mainSection {
     height: 70vh;
   }
-
-  .card-img {
-    max-height: 75px;
-  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -170,7 +167,3 @@ button {
     padding: 30px;
   }
 
-  .card-img {
-    max-height: 100 px;
-  }
-}
