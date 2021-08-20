@@ -13,6 +13,11 @@ let encoreButton = document
   .addEventListener("click", () => {
     removeReset();
   });
+let playAgainButton = document
+  .querySelector(".fail button")
+  .addEventListener("click", () => {
+    removeReset();
+  });
 let myTimer;
 let newDeck = Array.from(document.querySelectorAll(".card"));
 let cardDeck = document.querySelector(".cardDeck");
@@ -22,6 +27,7 @@ let seconds;
 let flippedCards = [];
 let matchCounter = 0;
 let winModal = document.querySelector(".win");
+let failModal = document.querySelector(".fail");
 let timeElapsed;
 let clockTime = document.querySelector(".clockTime");
 let removeModal = document.querySelectorAll(".modal");
@@ -57,9 +63,10 @@ const shuffleDeck = () => {
 // manipulate html text
 const startTimer = () => {
   clearInterval(myTimer);
-  seconds = 45;
+  seconds = 46;
   myTimer = setInterval(() => {
     if (seconds === 0) {
+      fail();
       clearInterval(myTimer);
     } else {
       seconds--;
@@ -143,6 +150,15 @@ function win() {
   timeElapsed = 45 - seconds;
   clockTime.innerText = `${timeElapsed} seconds!`;
   clearInterval(myTimer);
+}
+
+function fail() {
+  setTimeout(function () {
+    failModal.style.cssText = "visibility: visible";
+    failModal.style.opacity = 1;
+  }, 1000);
+  clearInterval(myTimer);
+  disable();
 }
 
 //remove modal and reset game
