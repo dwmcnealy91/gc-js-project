@@ -3,24 +3,44 @@ let startButton = document
   .addEventListener("click", () => {
     reset();
   });
-
 let resetButton = document
   .getElementById("resetButton")
   .addEventListener("click", () => {
     reset();
   });
+let encoreButton = document
+  .querySelector(".button")
+  .addEventListener("click", () => {
+    removeReset();
+  });
+let playAgainButton = document
+  .querySelector(".fail button")
+  .addEventListener("click", () => {
+    removeReset();
+  });
 let myTimer;
 let newDeck = Array.from(document.querySelectorAll(".card"));
 let cardDeck = document.querySelector(".cardDeck");
-cardDeck.addEventListener("click", flipCard);
 let timer = document.querySelector(".timer");
 let seconds;
 let flippedCards = [];
+
 
 let matchCounter = 0;
 
 let modal = document.querySelector(".win modal");
 let timeElapsed;
+
+
+let matchCounter = 0;
+let winModal = document.querySelector(".win");
+let failModal = document.querySelector(".fail");
+let timeElapsed;
+let clockTime = document.querySelector(".clockTime");
+let removeModal = document.querySelectorAll(".modal");
+
+//player must hit start button to begin play
+window.onload = disable();
 
 
 //shuffle deck and re-position cards
@@ -38,6 +58,7 @@ const shuffle = (array) => {
   }
   return array;
 };
+
 //shuffles deck and adds card elements to page
 const shuffleDeck = () => {
   shuffle(newDeck);
@@ -46,12 +67,14 @@ const shuffleDeck = () => {
     cardDeck.append(item);
   }
 };
+
 // manipulate html text
 const startTimer = () => {
   clearInterval(myTimer);
-  seconds = 45;
+  seconds = 46;
   myTimer = setInterval(() => {
     if (seconds === 0) {
+      fail();
       clearInterval(myTimer);
     } else {
       seconds--;
@@ -62,6 +85,10 @@ const startTimer = () => {
 };
 
 function flipCard(event) {
+  if (!event.target.classList.contains("cardFront")) {
+    return;
+    //exit the function. Don't run
+  }
   const card = event.target.parentElement;
   console.log(card);
   card.classList.add("cardFlipped");
@@ -88,19 +115,19 @@ const reset = () => {
     }
   }
   flippedCards = [];
-  startTimer();
+  //startTimer();
   enable();
 };
 
-const disable = () => {
+function disable() {
   cardDeck.removeEventListener("click", flipCard);
-};
+}
 
 const enable = () => {
   cardDeck.addEventListener("click", flipCard);
 };
 
-const matched = () => {
+function matched() {
   setTimeout(function () {
     flippedCards[0].classList.add("match");
     flippedCards[1].classList.add("match");
@@ -109,8 +136,13 @@ const matched = () => {
     enable();
     flippedCards = [];
   }, 1000);
-};
-
+  if (matchCounter !== 6) {
+    matchCounter++;
+    if (matchCounter === 6) {
+      win();
+    }
+  }
+}
 function unmatched() {
   disable();
   setTimeout(function () {
@@ -122,12 +154,30 @@ function unmatched() {
   }, 1000);
 }
 
-function winModal () {
+function win() {
   setTimeout(function () {
-    winModal.style.visibility = null;
-    winModal.style.opacity = null;
+    winModal.style.cssText = "visibility: visible";
+    winModal.style.opacity = 1;
   }, 1000);
   timeElapsed = 45 - seconds;
-  clockTime.innerText = `${timeElapsed} seconds`;
+  clockTime.innerText = `${timeElapsed} seconds!`;
   clearInterval(myTimer);
 }
+
+function fail() {
+  setTimeout(function () {
+    failModal.style.cssText = "visibility: visible";
+    failModal.style.opacity = 1;
+  }, 1000);
+  clearInterval(myTimer);
+  disable();
+}
+
+//remove modal and reset game
+const removeReset = () => {
+  for (let item of removeModal) {
+    item.style.cssText = "visibility: none";
+    item.style.opacity = 0;
+  }
+  reset();
+};
